@@ -1,0 +1,42 @@
+<%- include("./partials/header") %>
+
+<body class="login bg">
+  <div>
+
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+      <div class="animate form login_form">
+        <section class="login_content">
+          <form action="/authenticate" method="post" enctype="application/x-www-form-urlencoded ">
+            <h1>Login Form</h1>
+            <div>
+              <input type="text" name="email" class="form-control" placeholder="Email" required="" />
+            </div>
+            <div>
+              <input type="password" name="password" class="form-control" placeholder="Password" required="" />
+            </div>
+            <div>
+                <input class="btn btn-default submit" type="submit"></input>
+              
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+
+
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <h1><i class="fa fa-ambulance"></i> DigitalAmbulance</h1>
+                <p>©2017 All Rights Reserved Ec3Softwares.com</p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+ <%- include("./partials/footer") %>

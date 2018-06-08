@@ -1,0 +1,100 @@
+<%- include("./partials/header") %>
+<!-- Page Content-->
+
+<body class="nav-md">
+<%- include("./partials/navigation") %>
+<div class="row right_col">
+  <% if(code==200){ %>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Wow!</strong> New hospital Added successfully.
+      </div>
+ <% } %>
+ <% if(code==208){ %>
+  <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>OopsSomething went wrong.Hospital not added!
+    </div>
+<% } %>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>New Hospital<small>add hospitals to serve better</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br>
+                    <form id="new_hospital_form" method="post" action="/new-hospital" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+            
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hospital-name">Hospital Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input name='hospital_name' type="text" id="hospital-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user-name">user Name <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input name='user_name' type="text" id="user-name" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="password" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="latitude" class="control-label col-md-3 col-sm-3 col-xs-12">Latitude</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="latitude" class="form-control col-md-7 col-xs-12" type="text" name="latitude">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="longitude" class="control-label col-md-3 col-sm-3 col-xs-12">Latitude</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="longitude" class="form-control col-md-7 col-xs-12" type="text" name="longitude">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="control-label col-md-3 col-sm-3 col-xs-12">Emergency Message</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="message" class="form-control col-md-7 col-xs-12" type="text" name="message">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="doctor_message" class="control-label col-md-3 col-sm-3 col-xs-12">Doctor Message</label>
+                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="doctor_message" class="form-control col-md-7 col-xs-12" type="text" name="doctor_message">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact" class="control-label col-md-3 col-sm-3 col-xs-12">Contact</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input id="contact" class="form-control col-md-7 col-xs-12" type="text" name="contact">
+                                </div>
+                              </div>
+         
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button class="btn btn-primary" type="reset">Reset</button>
+                          <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+            
+                    </form>
+                  </div>
+                </div>
+              </div>
+</div>
+<%- include("./partials/footer") %>

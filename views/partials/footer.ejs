@@ -1,0 +1,56 @@
+
+      <!-- jQuery -->
+      <script src="<%=url%>/vendors/jquery/jquery.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="<%=url%>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- Custom Theme Scripts -->
+      <script src="<%=url%>/build/js/custom.min.js"></script>
+
+  <div id="sound"></div>
+  <div id="emergency_modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h1 class="modal-title" style="color:red">Accident!!!! Rush with an Ambulance!</h1>
+          </div>
+          <div class="modal-body">
+            <h2>Injury Type : <font id="inj_type"></font></h2>
+            <h2>Location/Address : <font id="loc"></font></h2>
+            <h2>Contact Person : <font id="contact"></font></h2>
+            <h2>Accident Photo : <img id="acc_image" height="200px" width="200px" src=""/></h2>
+          </div>
+          <div class="modal-footer">
+              <a id="map" target="_blank" href="" class="btn btn-primary"> View on Map</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <script src="<%=url%>/vendors/socket.io.js"></script>
+    <script>
+      var socket = io.connect('<%=url%>',{reconnect:true});
+      socket.on('connect',function(){
+        console.log('socket connected')
+      });
+      socket.on('emergency',function(data){
+        if(data.hospital_id == "<%=uid%>"){
+          playSiren('siren');
+          $("#emergency_modal").modal('show');
+          $("#inj_type").text(data.emergencyData.injury);
+          $("#loc").text(data.emergencyData.accident_location);
+          $("#contact").text(data.emergencyData.informer);
+          $("#acc_image").attr("src","<%=url%>"+data.emergencyData.picture);
+          $("#map").attr('href',"https://www.google.com/maps/?q="+data.emergencyData.location.latitude+","+data.emergencyData.location.longitude);
+        }
+      });
+    function playSiren(filename){   
+    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="<%=url%>/' + filename + '.mp3" type="audio/mpeg" /><source src="<%=url%>/' + filename + '.ogg" type="audio/ogg" /><embed hidden="true" autostart="true" loop="true" src="<%=url%>/' + filename +'.mp3" /></audio>';
+    }
+    </script>
+
+    </body>
+    </html>
